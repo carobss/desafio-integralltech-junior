@@ -63,7 +63,9 @@ public class AnalisadorIAService {
             return PrioridadeChamado.CRITICA;
         }
         if (texto.contains("lento") || texto.contains("travando") ||
-            texto.contains("intermitente") || texto.contains("erro")) {
+            texto.contains("intermitente") || texto.contains("erro") ||
+            texto.contains("quebrado") || texto.contains("quebrada") ||
+            texto.contains("atraso") || texto.contains("rejeição")) {
             return PrioridadeChamado.ALTA;
         }
         if (texto.contains("dúvida") || texto.contains("duvida") ||
@@ -77,21 +79,25 @@ public class AnalisadorIAService {
         if (texto.contains("computador") || texto.contains("sistema") ||
             texto.contains("internet") || texto.contains("rede") ||
             texto.contains("senha") || texto.contains("software") ||
-            texto.contains("impressora") || texto.contains("acesso")) {
+            texto.contains("impressora") || texto.contains("acesso") ||
+            texto.contains("instalar") || texto.contains("wifi")) {
             return SetorChamado.TI;
         }
         if (texto.contains("salario") || texto.contains("salário") ||
             texto.contains("pagamento") || texto.contains("beneficio") ||
-            texto.contains("férias") || texto.contains("ferias")) {
+            texto.contains("férias") || texto.contains("ferias") ||
+            texto.contains("folga") || texto.contains("atestado")) {
             return SetorChamado.RH;
         }
         if (texto.contains("nota fiscal") || texto.contains("reembolso") ||
-            texto.contains("financeiro") || texto.contains("pagamento")) {
+            texto.contains("financeiro") || texto.contains("pagamento") ||
+            texto.contains("bancario") || texto.contains("bancário")) {
             return SetorChamado.FINANCEIRO;
         }
         if (texto.contains("ar condicionado") || texto.contains("lâmpada") ||
             texto.contains("lampada") || texto.contains("torneira") ||
-            texto.contains("cadeira") || texto.contains("mesa")) {
+            texto.contains("cadeira") || texto.contains("mesa") ||
+            texto.contains("porta") || texto.contains("janela")) {
             return SetorChamado.MANUTENCAO;
         }
         return SetorChamado.TI;
