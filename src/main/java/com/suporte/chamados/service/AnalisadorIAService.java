@@ -20,7 +20,7 @@ public class AnalisadorIAService {
 
         String prompt = montarPrompt(chamado.getTitulo(), chamado.getDescricao());
 
-        return chamarMock(id, chamado.getTitulo(), chamado.getDescricao());
+        return chamarMock(id, chamado.getTitulo(), prompt);
     }
 
     private String montarPrompt(String titulo, String descricao) {
@@ -41,13 +41,12 @@ public class AnalisadorIAService {
                 """.formatted(titulo, descricao);
     }
 
-    private AnaliseIAResponseDTO chamarMock(Long chamadoId, String titulo, String descricao) {
-        String texto = (titulo + " " + descricao).toLowerCase();
+    private AnaliseIAResponseDTO chamarMock(Long chamadoId, String titulo, String prompt) { 
+        String texto = prompt.toLowerCase();
 
         PrioridadeChamado prioridade = inferirPrioridade(texto);
         SetorChamado setor = inferirSetor(texto);
-        String resumo = gerarResumo(titulo, prioridade);
-
+        String resumo = gerarResumo(titulo, prioridade); 
         return AnaliseIAResponseDTO.builder()
                 .chamadoId(chamadoId)
                 .prioridadeSugerida(prioridade)
