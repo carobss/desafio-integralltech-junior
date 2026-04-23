@@ -49,10 +49,16 @@ public class ChamadoService {
 
     // Busca chamado pelo SETOR
     public List<ChamadoResponseDTO> filtrarPorSetor(SetorChamado setor) {
-        return chamadoRepository.findBySetor(setor)
+        List<ChamadoResponseDTO> chamados = chamadoRepository.findBySetor(setor)
                 .stream()
                 .map(ChamadoResponseDTO::fromEntity)
                 .collect(Collectors.toList());
+
+        if (chamados.isEmpty()) {
+            throw new RuntimeException("Chamado não encontrado para o setor: " + setor);
+        }
+
+        return chamados;
     }
 
     // Atualiza chamado por completo
