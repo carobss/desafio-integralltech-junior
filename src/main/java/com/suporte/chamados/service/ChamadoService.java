@@ -3,6 +3,7 @@ package com.suporte.chamados.service;
 import com.suporte.chamados.dto.AtualizarChamadoDTO;
 import com.suporte.chamados.dto.ChamadoRequestDTO;
 import com.suporte.chamados.dto.ChamadoResponseDTO;
+import com.suporte.chamados.dto.MensagemResponseDTO;
 import com.suporte.chamados.entity.Chamado;
 import com.suporte.chamados.enums.SetorChamado;
 import com.suporte.chamados.enums.StatusChamado;
@@ -86,7 +87,7 @@ public class ChamadoService {
     }
 
     // Deleta chamado
-    public void cancelar(Long id) {
+    public MensagemResponseDTO cancelar(Long id) {
         Chamado chamado = buscarOuLancarErro(id);
 
         if (chamado.getStatus().isFinalizado()) {
@@ -99,6 +100,7 @@ public class ChamadoService {
         chamado.setDataFechamento(LocalDateTime.now());
 
         chamadoRepository.save(chamado);
+        return new MensagemResponseDTO("Chamado cancelado com sucesso");
     }
 
     // Método auxiliar

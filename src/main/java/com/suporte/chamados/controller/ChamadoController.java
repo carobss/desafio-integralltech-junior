@@ -4,6 +4,7 @@ import com.suporte.chamados.dto.AnaliseIAResponseDTO;
 import com.suporte.chamados.dto.AtualizarChamadoDTO;
 import com.suporte.chamados.dto.ChamadoRequestDTO;
 import com.suporte.chamados.dto.ChamadoResponseDTO;
+import com.suporte.chamados.dto.MensagemResponseDTO;
 import com.suporte.chamados.enums.SetorChamado;
 import com.suporte.chamados.service.AnalisadorIAService;
 import com.suporte.chamados.service.ChamadoService;
@@ -46,9 +47,8 @@ public class ChamadoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> cancelar(@PathVariable Long id) {
-        chamadoService.cancelar(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<MensagemResponseDTO> cancelar(@PathVariable Long id) {
+        return ResponseEntity.ok(chamadoService.cancelar(id));
     }
 
     @GetMapping("/setor/{setor}")
