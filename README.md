@@ -6,7 +6,9 @@ API REST de gerenciamento de chamados de suporte, desenvolvida em Java com Sprin
 
 ## Requisitos
 
-* Java 21 ou superior
+* Java 21 (LTS)
+> O projeto utiliza Lombok, que ainda não possui suporte estável para versões superiores do Java.
+> Certifique-se de compilar e executar com Java 21.
 
 > ⚠️ Este projeto utiliza o **Maven Wrapper**, portanto **não é necessário ter o Maven instalado** na máquina.
 
